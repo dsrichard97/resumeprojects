@@ -1,0 +1,301 @@
+:root {
+  --vader-red: #8B0000;
+  --link-blue: #1e90ff;
+}
+
+/* === RESET & BASE === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  background: #111;
+  color: #eee;
+}
+
+/* === LEFT SIDEBAR === */
+.w3-sidebar.left {
+  width: 220px;
+  background: #000;
+  border-right: 2px solid var(--vader-red);
+  position: fixed; top: 0; left: 0;
+  height: 100vh; overflow: auto;
+}
+.w3-sidebar.left .w3-container h3 { margin-bottom: 1rem; }
+.w3-sidebar.left a {
+  display: block; padding: .5rem 1rem;
+  color: #eee !important; text-decoration: none;
+  transition: color .3s ease;
+}
+.w3-sidebar.left a:hover { color: var(--vader-red) !important; }
+
+/* === MAIN WRAPPER === */
+.main-wrapper {
+  margin-left: 220px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* === TOP NAVIGATION === */
+.w3-bar.top {
+  background: #000;
+  border-bottom: 2px solid var(--vader-red) !important;
+}
+.w3-bar.top a {
+  position: relative;
+  color: #eee !important; text-decoration: none;
+  margin: 0 8px; padding-bottom: 6px;
+  font-weight: 500;
+  transition: color .3s ease, transform .3s ease;
+}
+.w3-bar.top a::before {
+  content:""; position:absolute;
+  bottom:0; left:0; width:0; height:3px;
+  background: var(--vader-red);
+  transition: width .4s ease;
+}
+.w3-bar.top a:hover {
+  color: var(--vader-red) !important;
+  transform: scale(1.08);
+}
+.w3-bar.top a:hover::before {
+  width: 100%;
+}
+.vader-icon {
+  width:24px; height:24px; fill:currentColor;
+  vertical-align: middle;
+  transition: fill .2s ease, transform .2s ease;
+}
+.w3-bar.top a:hover .vader-icon {
+  fill: var(--vader-red);
+  transform: scale(1.1);
+}
+
+/* === MAIN CONTENT AREA === */
+.w3-main {
+  flex: 1;
+  background: #111;
+  padding: 2rem 1rem;
+}
+.content-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* === PROJECT CONTROLS (TABS + SEARCH) === */
+.project-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+.project-tabs .project-tab {
+  background: #222;
+  color: #eee;
+  border: none;
+  padding: .3rem .6rem;
+  font-size: .85rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.project-tabs .project-tab.active,
+.project-tabs .project-tab:hover {
+  background: var(--vader-red);
+  color: #111;
+}
+.project-filter input {
+  background: #222;
+  color: #eee;
+  border: 1px solid #444;
+  padding: .3rem .6rem;
+  border-radius: 4px;
+  font-size: .9rem;
+  width: 160px;
+}
+
+/* === CENTER & LIGHTSABER STYLING FOR TITLE & NOTE === */
+#projects > h3,
+#projects > p {
+  text-align: center;
+}
+#projects > h3 {
+  position: relative;
+  margin-bottom: 1rem;
+}
+#projects > h3::after {
+  content: "";
+  position: absolute;
+  left: 50%; transform: translateX(-50%);
+  bottom: -6px;
+  width: 140px; height: 4px;
+  background: var(--vader-red);
+  box-shadow:
+    0 0 8px var(--vader-red),
+    0 0 16px var(--vader-red),
+    0 0 24px var(--vader-red);
+  border-radius: 2px;
+}
+#projects > p {
+  display: inline-block;
+  margin: 0 auto 2rem;
+  padding: .3rem .8rem;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid var(--vader-red);
+  border-radius: 4px;
+  box-shadow:
+    0 0 6px var(--vader-red),
+    0 0 12px var(--vader-red);
+  font-style: italic;
+  font-size: .95rem;
+}
+
+/* === PROJECT TITLES: CRISP + HOVER RED === */
+.project-details h3 {
+  margin: 0 0 .25rem;
+  color: #eee;
+  font-size: 1.25rem;
+  transition: color .2s ease;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.project-details h3:hover {
+  color: var(--vader-red);
+}
+
+/* === PROJECT TILES GRID: 3×2 on desktop === */
+.projects-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  justify-items: center;
+  margin: 0 auto;
+}
+.project-item {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+.project-item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.project-details { padding: 1rem; }
+.project-meta {
+  font-size: .85rem;
+  color: #aaa;
+  margin-bottom: .5rem;
+}
+.project-details p {
+  margin-bottom: .75rem;
+  line-height: 1.5;
+}
+.project-links {
+  display: flex; gap: 1rem;
+}
+.project-links a {
+  background: var(--vader-red);
+  color: #111;
+  padding: .4rem .8rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: .9rem;
+  transition: background .2s ease;
+}
+.project-links a:hover {
+  background: #a00000;
+}
+
+/* === TOOLTIP (on hover) === */
+.project-summary-tooltip {
+  position: absolute;
+  top: 8px; left: 8px;
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  padding: .5rem;
+  border-radius: 4px;
+  max-width: 220px;
+  font-size: .85rem;
+  line-height: 1.3;
+  display: none;
+  z-index: 10;
+}
+
+/* === BOTTOM SOCIAL LINKS === */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.social-links a {
+  color: var(--link-blue);
+  font-size: 1.5rem;
+  transition: color .2s ease, transform .2s ease;
+}
+.social-links a:hover { transform: translateY(-3px); }
+
+/* === RESPONSIVE ADJUSTMENTS === */
+@media (max-width: 900px) {
+  .projects-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .projects-list {
+    grid-template-columns: 1fr;
+  }
+  .w3-sidebar.left {
+    position: relative; width: 100%; height: auto;
+    border-right: none;
+    border-bottom: 2px solid var(--vader-red);
+  }
+  .main-wrapper { margin-left: 0; }
+}
+
+/* ensure the parent (#projects) centers its inline-block children */
+#projects {
+  text-align: center;
+}
+
+/* make the badge inline-block and auto-margin it */
+.lightsaber-badge {
+  display: inline-block;
+  margin: 0 auto 2rem;
+}
+
+
+/* Wrap heading, badge, and controls in a centered column */
+#projects .header-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* ensure the badge sits below the heading and above controls */
+#projects .lightsaber-badge {
+  margin-bottom: 1.5rem;
+}
+
+/* tighten up the controls so they center under the badge */
+.project-controls {
+  justify-content: center; /* already there, but ensure it */
+}
+
+/* give the search field a little more width so it’s usable */
+.project-filter input {
+  width: 220px;
+}
+
